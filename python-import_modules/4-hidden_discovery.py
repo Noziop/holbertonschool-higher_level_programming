@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import os
 import imp
 
@@ -12,5 +13,5 @@ names = dir(module)
 
 # Print the names in alphabetical order
 for name in sorted(names):
-	if not name.startswith("__"):
-		print(name)
+    if not name.startswith("__"):
+        print(name)
