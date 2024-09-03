@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 def pow(a: float, b: float) -> float:
     """My power function
 
