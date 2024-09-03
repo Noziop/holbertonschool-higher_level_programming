@@ -1,5 +1,4 @@
 #!/usr/bin/python3
 
-# Print the alphabet in lowercase
-for i in range(97, 123):
-    print(chr(i), end="")
+# Imprimer l'alphabet en minuscules sans nouvelle ligne
+print(''.join(chr(i) for i in range(97, 123)), end='')
