@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-import sys
-sys.stdout.write(*map(chr, range(65, 91)), '\n')
+import string
+__import__('sys').stdout.write(string.ascii_uppercase + '\n')
