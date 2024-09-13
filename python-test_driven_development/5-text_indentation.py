@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module contains a function that prints a text with 2 new lines after each of these characters: ., ? and :
+This module contains a function that prints a text
+with 2 new lines after each of these characters: ., ? and :
 """
 
 
