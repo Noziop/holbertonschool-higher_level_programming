@@ -1,6 +1,6 @@
 import unittest
 
-from your_module import max_integer  # Replace 'your_module' with the actual module name
+max_integer = __import__('6-max_integer').max_integer
 
 class TestMaxInteger(unittest.TestCase):
     def test_max_at_end(self):
@@ -35,4 +35,3 @@ class TestMaxInteger(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    
