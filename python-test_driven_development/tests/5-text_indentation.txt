@@ -1,0 +1,76 @@
+This file contains all the tests for the text_indentation function
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("Hello world.")
+Hello world.
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("How are you?")
+How are you?
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("I am fine: thank you.")
+I am fine:
+<BLANKLINE>
+ thank you.
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("This is a test... with multiple punctuation.")
+This is a test.
+<BLANKLINE>
+.
+<BLANKLINE>
+.
+<BLANKLINE>
+ with multiple punctuation.
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("")
+ 
+>>> text_indentation(123)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(3.14)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(None)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation(True)
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation([1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation({"a": 1})
+Traceback (most recent call last):
+...
+TypeError: text must be a string
+>>> text_indentation("Hello\nworld.")
+Hello
+world.
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("Hello world. How are you?")
+Hello world.
+<BLANKLINE>
+ How are you?
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("Hello world: How are you?")
+Hello world:
+<BLANKLINE>
+ How are you?
+<BLANKLINE>
+<BLANKLINE>
+>>> text_indentation("Hello world? How are you?")
+Hello world?
+<BLANKLINE>
+ How are you?
+<BLANKLINE>
+<BLANKLINE>
