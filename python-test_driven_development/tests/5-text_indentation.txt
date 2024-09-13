@@ -25,6 +25,12 @@ This is a test.
  with multiple punctuation.
 <BLANKLINE>
 <BLANKLINE>
+>>> text_indentation("Hello: World. Are you there?")
+Hello:
+<BLANKLINE>
+World.
+<BLANKLINE>
+Are you there?
 >>> text_indentation("")
  
 >>> text_indentation(123)
