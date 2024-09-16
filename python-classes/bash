@@ -1,0 +1,240 @@
+# Création des fichiers pour les exercices
+
+# Fichiers d'exercices avec shebang
+for file in 0-square.py 1-square.py 2-square.py 3-square.py 4-square.py 5-square.py 6-square.py 100-singly_linked_list.py 101-square.py 102-square.py
+do
+    echo "#!/usr/bin/python3" > $file
+done
+
+# Fichiers main avec leur contenu
+
+# 0-main.py
+cat <<EOT > 0-main.py
+#!/usr/bin/python3
+Square = __import__('0-square').Square
+
+my_square = Square()
+print(type(my_square))
+print(my_square.__dict__)
+EOT
+
+# 1-main.py
+cat <<EOT > 1-main.py
+#!/usr/bin/python3
+Square = __import__('1-square').Square
+
+my_square = Square(3)
+print(type(my_square))
+print(my_square.__dict__)
+
+try:
+    print(my_square.size)
+except Exception as e:
+    print(e)
+
+try:
+    print(my_square.__size)
+except Exception as e:
+    print(e)
+EOT
+
+# 2-main.py
+cat <<EOT > 2-main.py
+#!/usr/bin/python3
+Square = __import__('2-square').Square
+
+my_square_1 = Square(3)
+print(type(my_square_1))
+print(my_square_1.__dict__)
+
+my_square_2 = Square()
+print(type(my_square_2))
+print(my_square_2.__dict__)
+
+try:
+    print(my_square_1.size)
+except Exception as e:
+    print(e)
+
+try:
+    print(my_square_1.__size)
+except Exception as e:
+    print(e)
+
+try:
+    my_square_3 = Square("3")
+    print(type(my_square_3))
+    print(my_square_3.__dict__)
+except Exception as e:
+    print(e)
+
+try:
+    my_square_4 = Square(-89)
+    print(type(my_square_4))
+    print(my_square_4.__dict__)
+except Exception as e:
+    print(e)
+EOT
+
+# 3-main.py
+cat <<EOT > 3-main.py
+#!/usr/bin/python3
+Square = __import__('3-square').Square
+
+my_square_1 = Square(3)
+print("Area: {}".format(my_square_1.area()))
+
+try:
+    print(my_square_1.size)
+except Exception as e:
+    print(e)
+
+try:
+    print(my_square_1.__size)
+except Exception as e:
+    print(e)
+
+my_square_2 = Square(5)
+print("Area: {}".format(my_square_2.area()))
+EOT
+
+# 4-main.py
+cat <<EOT > 4-main.py
+#!/usr/bin/python3
+Square = __import__('4-square').Square
+
+my_square = Square(89)
+print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+
+my_square.size = 3
+print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+
+try:
+    my_square.size = "5 feet"
+    print("Area: {} for size: {}".format(my_square.area(), my_square.size))
+except Exception as e:
+    print(e)
+EOT
+
+# 5-main.py
+cat <<EOT > 5-main.py
+#!/usr/bin/python3
+Square = __import__('5-square').Square
+
+my_square = Square(3)
+my_square.my_print()
+
+print("--")
+
+my_square.size = 10
+my_square.my_print()
+
+print("--")
+
+my_square.size = 0
+my_square.my_print()
+
+print("--")
+EOT
+
+# 6-main.py
+cat <<EOT > 6-main.py
+#!/usr/bin/python3
+Square = __import__('6-square').Square
+
+my_square_1 = Square(3)
+my_square_1.my_print()
+
+print("--")
+
+my_square_2 = Square(3, (1, 1))
+my_square_2.my_print()
+
+print("--")
+
+my_square_3 = Square(3, (3, 0))
+my_square_3.my_print()
+
+print("--")
+EOT
+
+# 100-main.py
+cat <<EOT > 100-main.py
+#!/usr/bin/python3
+SinglyLinkedList = __import__('100-singly_linked_list').SinglyLinkedList
+
+sll = SinglyLinkedList()
+sll.sorted_insert(2)
+sll.sorted_insert(5)
+sll.sorted_insert(3)
+sll.sorted_insert(10)
+sll.sorted_insert(1)
+sll.sorted_insert(-4)
+sll.sorted_insert(-3)
+sll.sorted_insert(4)
+sll.sorted_insert(5)
+sll.sorted_insert(12)
+sll.sorted_insert(3)
+print(sll)
+EOT
+
+# 101-main.py
+cat <<EOT > 101-main.py
+#!/usr/bin/python3
+Square = __import__('101-square').Square
+
+my_square = Square(5, (0, 0))
+print(my_square)
+
+print("--")
+
+my_square = Square(5, (4, 1))
+print(my_square)
+EOT
+
+# 102-main.py
+cat <<EOT > 102-main.py
+#!/usr/bin/python3
+Square = __import__('102-square').Square
+
+s_5 = Square(5)
+s_6 = Square(6)
+
+if s_5 < s_6:
+    print("Square 5 < Square 6")
+if s_5 <= s_6:
+    print("Square 5 <= Square 6")
+if s_5 == s_6:
+    print("Square 5 == Square 6")
+if s_5 != s_6:
+    print("Square 5 != Square 6")
+if s_5 > s_6:
+    print("Square 5 > Square 6")
+if s_5 >= s_6:
+    print("Square 5 >= Square 6")
+EOT
+
+# Création du fichier README
+cat <<EOT > README.md
+# Classes Python - Square
+
+Ce répertoire contient des exercices sur la définition de classes en Python, en mettant l'accent sur la création d'une classe Square. Chaque exercice implique des aspects cruciaux de la programmation orientée objet, y compris la gestion des attributs privés, la validation des données, la création de méthodes, et plus encore.
+
+## Exercices
+
+0. **Mon premier carré** : Création d'une classe vide \`Square\`.
+1. **Carré avec taille** : Ajout de l'attribut de taille à la classe \`Square\`.
+2. **Validation de taille** : Validation de l'attribut \`size\` lors de l'initialisation.
+3. **Zone d'un carré** : Méthode pour calculer la zone.
+4. **Accès et mise à jour d'un attribut privé** : Utilisation de propriétés pour gérer \`size\`.
+5. **Impression d'un carré** : Méthode pour afficher le carré dans la console.
+6. **Coordonnées d'un carré** : Ajout de l'option de positionnement pour le carré.
+7. **Liste liée simple** : Définition d'une classe \`Node\` et d'une classe \`SinglyLinkedList\`.
+8. **Impression d'une instance Square** : Amélioration de la représentation en chaîne du carré.
+9. **Comparaison de 2 carrés** : Permet l'utilisation des opérateurs de comparaison entre instances de carrés.
+
+Chaque exercice est accompagné d'un fichier main qui démontre son utilisation.
+EOT
+
+# Rendre les fichiers main exécutables
+chmod +x *-main.py
