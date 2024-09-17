@@ -3,6 +3,7 @@
 
 
 class Rectangle:
+    '''Class that defines a rectangle'''
     number_of_instances = 0  # Class attribute to keep track of instances
     print_symbol = "#"  # Class attribute to print the rectangle
 
