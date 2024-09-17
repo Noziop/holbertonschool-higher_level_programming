@@ -29,21 +29,27 @@ class Square:
         if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
+
     def __lt__(self, other):
         '''Less than'''
         return self.area() < other.area()
+
     def __le__(self, other):
         '''Less than or equal'''
         return self.area() <= other.area()
+
     def __eq__(self, other):
         '''Equal to'''
         return self.area() == other.area()
+
     def __ne__(self, other):
         '''Not equal to'''
         return self.area() != other.area()
+
     def __gt__(self, other):
         '''Greater than'''
         return self.area() > other.area()
+
     def __ge__(self, other):
         '''Greater than or equal'''
         return self.area() >= other.area()
