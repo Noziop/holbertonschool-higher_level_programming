@@ -97,6 +97,12 @@ Traceback (most recent call last):
     ...
 TypeError: profile must be an integer
 
+# Test integer_validator with dictionary (should raise TypeError)
+>>> bg.integer_validator("age", {"age": 25})
+Traceback (most recent call last):
+    ...
+TypeError: profile must be an integer
+
 # Test with a personalized object
 >>> class MyInt:
 ...     def __init__(self, value):
