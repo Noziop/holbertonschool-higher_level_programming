@@ -18,6 +18,7 @@ class Shape(ABC):
         '''This method should be implemented by subclasses.'''
         pass
 
+
 class Circle(Shape):
     '''This class represents a Circle.'''
     def __init__(self, radius):
@@ -31,6 +32,7 @@ class Circle(Shape):
     def perimeter(self):
         '''This method returns the perimeter of the Circle.'''
         return 2 * math.pi * self.radius
+
 
 class Rectangle(Shape):
     '''This class represents a Rectangle.'''
@@ -46,6 +48,7 @@ class Rectangle(Shape):
     def perimeter(self):
         '''This method returns the perimeter of the Rectangle.'''
         return 2 * (self.width + self.height)
+
 
 def shape_info(shape):
     '''This function prints the area and perimeter of a shape.'''
