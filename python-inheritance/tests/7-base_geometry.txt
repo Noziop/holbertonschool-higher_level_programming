@@ -62,13 +62,13 @@ TypeError: complex must be an integer
 >>> bg.integer_validator()
 Traceback (most recent call last):
     ...
-TypeError: BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 # Test integer_validator with only one argument (should raise TypeError)
 >>> bg.integer_validator("age")
 Traceback (most recent call last):
     ...
-TypeError: BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
 # Test integer_validator with more than two arguments (should raise TypeError)
 >>> bg.integer_validator("age", 18, 20)
