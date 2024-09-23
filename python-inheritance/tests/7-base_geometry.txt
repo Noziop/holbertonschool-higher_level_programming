@@ -74,7 +74,7 @@ TypeError: BaseGeometry.integer_validator() missing 1 required positional argume
 >>> bg.integer_validator("age", 18, 20)
 Traceback (most recent call last):
     ...
-TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
 # Test integer_validator with very large integer (should pass)
 >>> bg.integer_validator("population", 999999999999)
