@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+'''This script generates random logs'''
+
+
 import random
 import sys
 from time import sleep
