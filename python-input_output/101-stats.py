@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Module for 101-stats.py'''
+'''This script reads from standard input and computes metrics'''
 
 import sys
 
