@@ -30,7 +30,7 @@ def fetch_and_save_posts():
                 post.get('body')
             ))
     print('Data saved to posts.csv')
-    .*
+
 
 
 if __name__ == '__main__':
