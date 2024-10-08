@@ -5,20 +5,8 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"
-    },
-    "john": {
-        "username": "john",
-        "name": "John",
-        "age": 30,
-        "city": "New York"
-    }
-}
+
+users = {}
 
 
 @app.route('/')
@@ -47,19 +35,18 @@ def get_user(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    new_user = request.json
-    if 'username' not in new_user:
+    new_user = request.form.to_dict() if request.form else request.json
+    if not new_user or 'username' not in new_user:
         return jsonify({"error": "Username is required"}), 400
     username = new_user['username']
-    if username not in users:
-        users[username] = new_user
-        return jsonify({
-            "message": "User added",
-            "user": new_user
-        }), 201
-    else:
+    if username in users:
         return jsonify({"error": "Username already exists"}), 400
+    users[username] = new_user
+    return jsonify({
+        "message": "User added",
+        "user": new_user
+    }), 201
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
