@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 ''' Module that implements a simple API '''
 
-
 from flask import Flask, jsonify, request
-
 
 app = Flask(__name__)
 
@@ -13,13 +11,13 @@ users = {
         "name": "Jane",
         "age": 28,
         "city": "Los Angeles"
-        },
+    },
     "john": {
         "username": "john",
         "name": "John",
         "age": 30,
         "city": "New York"
-        }
+    }
 }
 
 
@@ -64,4 +62,4 @@ def add_user():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000)
+    app.run()
