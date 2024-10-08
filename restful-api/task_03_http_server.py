@@ -9,6 +9,7 @@ import json
 CONTENT_TYPE_JSON = 'application/json'
 CONTENT_TYPE_TEXT = 'text/plain'
 
+
 class Handler(BaseHTTPRequestHandler):
     ''' Handler for HTTP requests '''
 
@@ -52,12 +53,14 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(message.encode())
 
+
 def run(server_class=HTTPServer, handler_class=Handler, port=8000):
     ''' Starts the HTTP server '''
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f'Starting httpd server on port {port}...')
     httpd.serve_forever()
+
 
 if __name__ == "__main__":
     run()
