@@ -1,16 +1,13 @@
 #!/usr/bin/python3
 ''' Module that implements a simple API '''
 
-
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 import json
 
-
 # Constants
 CONTENT_TYPE_JSON = 'application/json'
 CONTENT_TYPE_TEXT = 'text/plain'
-
 
 class Handler(BaseHTTPRequestHandler):
     ''' Handler for HTTP requests '''
@@ -21,12 +18,12 @@ class Handler(BaseHTTPRequestHandler):
             "name": "John",
             "age": 30,
             "city": "New York"
-            }, CONTENT_TYPE_JSON),
+        }, CONTENT_TYPE_JSON),
         '/info': ({
             "version": "1.0",
             "description": "A simple API built with http.server"
-            }, CONTENT_TYPE_JSON),
-        '/status': ({"status": "OK"}, CONTENT_TYPE_JSON)
+        }, CONTENT_TYPE_JSON),
+        '/status': ('OK', CONTENT_TYPE_TEXT)
     }
 
     def do_GET(self):
@@ -55,14 +52,12 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(message.encode())
 
-
 def run(server_class=HTTPServer, handler_class=Handler, port=8000):
     ''' Starts the HTTP server '''
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f'Starting httpd server on port {port}...')
     httpd.serve_forever()
-
 
 if __name__ == "__main__":
     run()
