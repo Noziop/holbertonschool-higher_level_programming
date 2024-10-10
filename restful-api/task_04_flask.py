@@ -87,7 +87,7 @@ def add_user():
         with user data and 201 status, or an error message
         with 400 status if the request is invalid.
     """
-    new_user = request.get_json(force=True)
+    new_user = request.get_json()
     if not new_user or 'username' not in new_user:
         return jsonify({"error": "Username is required"}), 400
 
