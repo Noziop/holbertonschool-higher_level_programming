@@ -7,18 +7,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-users = {
-    "jane": {
-        "username": "jane",
-        "name": "Jane",
-        "age": 28,
-        "city": "Los Angeles"},
-    "john": {
-        "username": "john",
-        "name": "John",
-        "age": 30,
-        "city": "New York"}
-}
+users = {}
 
 @app.route('/')
 def home():
