@@ -1,65 +1,66 @@
 #!/usr/bin/python3
-"""Creating a simple server Module"""
+''' Module that implements a simple API '''
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 users = {
     "jane": {
-                "username": "jane",
-                "name": "Jane", 
-                "age": 28, 
-                "city": "Los Angeles"
-            },
-
+        "username": "jane",
+        "name": "Jane",
+        "age": 28,
+        "city": "Los Angeles"},
     "john": {
-                "username": "john",
-                "name": "John", 
-                "age": 30, 
-                "city": "New York"
-            },
-        }
-
+        "username": "john",
+        "name": "John",
+        "age": 30,
+        "city": "New York"}
+}
 
 @app.route('/')
 def home():
-    """Default endpoint for homepage"""
     return "Welcome to the Flask API!"
 
+@app.route('/clear_users')
+def clear_users():
+    global users
+    users = {}
+    return "Users cleared"
 
 @app.route('/data')
 def data():
-    """Endpoint returning a JSON response with dictionary keys (usernames)"""
-    names = list(users.keys())
-    return jsonify(names)
-
+    if users == {}:
+        abort(404)
+    return jsonify(list(users.keys()))
 
 @app.route('/status')
 def status():
-    """Default endpoint returning the status of the API"""
     return "OK"
-
 
 @app.route('/users/<username>')
 def get_user(username):
-    """Endpoint returning a JSON response with the user details"""
     user = users.get(username)
-    if not user:
+    if user:
+        return jsonify(user)
+    else:
         return jsonify({"error": "User not found"}), 404
-    return jsonify(user)
-
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
-    """Endpoint to add a new user"""
-    new_user = request.get_json()
-    username = new_user.get('username')
-    if not username:
+    new_user = request.get_json(force=True)
+    if not new_user or 'username' not in new_user:
         return jsonify({"error": "Username is required"}), 400
+    username = new_user['username']
+    if username and 'name' and 'age' and 'city' in users:
+        return jsonify({"error": "Username already exists"}), 400
     users[username] = new_user
-    return jsonify({'message': 'User added', 'user': new_user}), 201
+    return jsonify({
+        "message": "User added",
+        "user": new_user
+    }), 201
 
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
