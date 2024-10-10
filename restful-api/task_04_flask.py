@@ -14,7 +14,7 @@ users = {}
 def home():
     """
     Home route that welcomes users to the Flask API.
-    
+
     Returns:
         str: A welcome message.
     """
@@ -25,7 +25,7 @@ def home():
 def clear_users():
     """
     Clears all users from the users dictionary.
-    
+
     Returns:
         tuple: A JSON response confirming the action and a 200 status code.
     """
@@ -38,7 +38,7 @@ def clear_users():
 def data():
     """
     Retrieves a list of all usernames in the users dictionary.
-    
+
     Returns:
         Response: A JSON array of usernames.
     """
@@ -49,7 +49,7 @@ def data():
 def status():
     """
     Provides a simple status check for the API.
-    
+
     Returns:
         str: "OK" if the API is running.
     """
@@ -60,12 +60,13 @@ def status():
 def get_user(username):
     """
     Retrieves user information for a specific username.
-    
+
     Args:
         username (str): The username to look up.
-    
+
     Returns:
-        tuple: A JSON response with user data if found, or an error message and 404 status if not found.
+        tuple: A JSON response with user data if found,
+        or an error message and 404 status if not found.
     """
     user = users.get(username)
     if user:
@@ -78,12 +79,13 @@ def get_user(username):
 def add_user():
     """
     Adds a new user to the users dictionary.
-    
+
     Expects a JSON payload with user information including a 'username' field.
-    
+
     Returns:
-        tuple: A JSON response confirming the addition with user data and 201 status,
-               or an error message with 400 status if the request is invalid.
+        tuple: A JSON response confirming the addition
+        with user data and 201 status, or an error message
+        with 400 status if the request is invalid.
     """
     new_user = request.get_json(force=True)
     if not new_user or 'username' not in new_user:
