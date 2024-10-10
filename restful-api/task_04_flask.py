@@ -21,8 +21,8 @@ def clear_users():
 
 @app.route('/data')
 def data():
-    if users == {}:
-        abort(404)
+    if not users:
+        abort(400)  # Changed from 404 to 400
     return jsonify(list(users.keys()))
 
 @app.route('/status')
@@ -35,7 +35,7 @@ def get_user(username):
     if user:
         return jsonify(user)
     else:
-        return jsonify({"error": "User not found"}), 404
+        return jsonify({"error": "User not found"}), 404  # Added status code 404
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -43,8 +43,10 @@ def add_user():
     if not new_user or 'username' not in new_user:
         return jsonify({"error": "Username is required"}), 400
     username = new_user['username']
-    if username and 'name' and 'age' and 'city' in users:
+    if username in users:  # Corrected condition
         return jsonify({"error": "Username already exists"}), 400
+    if not all(key in new_user for key in ['name', 'age', 'city']):  # Check for required fields
+        return jsonify({"error": "Name, age, and city are required"}), 400
     users[username] = new_user
     return jsonify({
         "message": "User added",
