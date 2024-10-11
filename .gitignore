@@ -3,3 +3,8 @@ __pycache__/
 *.swp
 *main.py
 Hackaton-Checker/
+*main*
+*.css
+*.html
+*wrapup*
+*csv*
