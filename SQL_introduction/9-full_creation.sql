@@ -1,13 +1,4 @@
 -- Create and fill table second_table
--- First, make sure we have the right environment
-CREATE DATABASE IF NOT EXISTS hbtn_0c_0;
-USE hbtn_0c_0;
-CREATE TABLE IF NOT EXISTS second_table (
-    id INT,
-    name VARCHAR(256),
-    score INT
-);
--- Insert multiple rows
 INSERT INTO second_table (id, name, score) VALUES 
     (1, "John", 10),
     (2, "Alex", 3),
