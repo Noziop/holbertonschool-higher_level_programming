@@ -95,6 +95,21 @@ DELETE FROM table_name WHERE condition;
 
 ## Jointures et Relations 👻
 
+## Guide des Jointures SQL - Quand utiliser quoi ? 🔮
+
+Les jointures SQL sont comme différents sorts pour combiner les tables de notre base de données :
+
+- **INNER JOIN** : Utilise-le quand tu veux uniquement les données qui correspondent dans les deux tables. Par exemple, pour lister uniquement les villes qui ont un état correspondant. C'est comme chercher les fantômes qui ont à la fois un nom ET un pouvoir !
+
+- **LEFT JOIN** : Parfait quand tu veux garder toutes les données de la table de gauche, même si elles n'ont pas de correspondance dans la table de droite. Comme quand tu veux lister tous les shows TV, même ceux qui n'ont pas encore de genre assigné.
+
+- **RIGHT JOIN** : L'inverse du LEFT JOIN, utilise-le quand tu veux garder toutes les données de la table de droite. C'est plus rare, on préfère souvent réorganiser la requête en LEFT JOIN.
+
+- **FULL JOIN** : Pour les cas où tu veux absolument tout garder des deux tables, même sans correspondance. C'est comme faire l'inventaire complet de ta maison !
+
+
+
+
 ### Types de JOIN
 ```
 -- INNER JOIN
@@ -110,6 +125,90 @@ SELECT * FROM table1 WHERE id IN (
     SELECT table1_id FROM table2 WHERE condition
 );
 ```
+
+## Jointures et Relations Avancées 🔮
+
+### Types de Jointures
+```
+-- INNER JOIN : Uniquement les correspondances
+SELECT * FROM table1
+INNER JOIN table2 ON table1.id = table2.table1_id;
+
+-- LEFT JOIN : Garde tout de la table de gauche
+SELECT * FROM table1
+LEFT JOIN table2 ON table1.id = table2.table1_id;
+
+-- RIGHT JOIN : Garde tout de la table de droite
+SELECT * FROM table2
+RIGHT JOIN table1 ON table1.id = table2.table1_id;
+
+-- FULL JOIN : Garde tout des deux tables
+SELECT * FROM table1
+FULL JOIN table2 ON table1.id = table2.table1_id;
+```
+
+### Relations Entre Tables 📚
+```
+-- Clé Primaire (PRIMARY KEY)
+CREATE TABLE states (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(256) NOT NULL
+);
+
+-- Clé Étrangère (FOREIGN KEY)
+CREATE TABLE cities (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    state_id INT NOT NULL,
+    name VARCHAR(256) NOT NULL,
+    FOREIGN KEY (state_id) REFERENCES states(id)
+);
+
+-- Relation Many-to-Many
+CREATE TABLE show_genres (
+    show_id INT,
+    genre_id INT,
+    PRIMARY KEY (show_id, genre_id),
+    FOREIGN KEY (show_id) REFERENCES shows(id),
+    FOREIGN KEY (genre_id) REFERENCES genres(id)
+);
+```
+
+### Requêtes Complexes 🎯
+```
+-- Jointure Multiple
+SELECT cities.name, states.name, countries.name
+FROM cities
+JOIN states ON cities.state_id = states.id
+JOIN countries ON states.country_id = countries.id;
+
+-- Sous-requêtes
+SELECT name FROM cities 
+WHERE state_id = (
+    SELECT id FROM states 
+    WHERE name = 'California'
+);
+
+-- Groupement avec Jointure
+SELECT genres.name, COUNT(show_genres.show_id) as show_count
+FROM genres
+LEFT JOIN show_genres ON genres.id = show_genres.genre_id
+GROUP BY genres.id;
+```
+
+### Cas d'Utilisation 🌟
+
+1. **One-to-One** (1:1)
+- Un utilisateur a un profil unique
+- Utilise une clé étrangère unique
+
+2. **One-to-Many** (1:N)
+- Un état a plusieurs villes
+- La clé étrangère est dans la table "many"
+
+3. **Many-to-Many** (N:N)
+- Des shows peuvent avoir plusieurs genres
+- Des genres peuvent être liés à plusieurs shows
+- Nécessite une table de jonction
 
 ## Gestion des Utilisateurs 👑
 
