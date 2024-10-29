@@ -1,0 +1,53 @@
+# Créer le README.md
+echo "# SQL Introduction
+
+## Description
+Introduction to SQL and MySQL 8.0 - Learning basic SQL queries and database management.
+
+## Requirements
+- Ubuntu 20.04 LTS or 22.04 LTS
+- MySQL 8.0
+- All SQL keywords should be in uppercase
+
+## Files
+- 0-list_databases.sql : List all databases
+- 1-create_database_if_missing.sql : Create a database
+- 2-remove_database.sql : Delete a database
+- 3-list_tables.sql : List all tables
+- 4-first_table.sql : Create a table
+- 5-full_table.sql : Print table description
+- 6-list_values.sql : List all rows
+- 7-insert_value.sql : Insert new row
+- 8-count_89.sql : Count records
+- 9-full_creation.sql : Create table with data
+- 10-top_score.sql : List by best score
+- 11-best_score.sql : Select the best
+- 12-no_cheating.sql : Update score
+- 13-change_class.sql : Remove records
+- 14-average.sql : Calculate average
+- 15-groups.sql : Group by score
+- 16-no_link.sql : List by name" > README.md
+
+# Créer les fichiers SQL avec leurs commentaires
+echo "-- List all databases" > 0-list_databases.sql
+echo "-- Create the database hbtn_0c_0 if it doesn't exist" > 1-create_database_if_missing.sql
+echo "-- Delete the database hbtn_0c_0" > 2-remove_database.sql
+echo "-- List all tables of a database" > 3-list_tables.sql
+echo "-- Create table first_table" > 4-first_table.sql
+echo "-- Print full description of first_table" > 5-full_table.sql
+echo "-- List all rows of first_table" > 6-list_values.sql
+echo "-- Insert a new row in first_table" > 7-insert_value.sql
+echo "-- Count records with id = 89" > 8-count_89.sql
+echo "-- Create and fill table second_table" > 9-full_creation.sql
+echo "-- List records by score" > 10-top_score.sql
+echo "-- List records with score >= 10" > 11-best_score.sql
+echo "-- Update Bob's score" > 12-no_cheating.sql
+echo "-- Remove records with score <= 5" > 13-change_class.sql
+echo "-- Compute score average" > 14-average.sql
+echo "-- List number of records by score" > 15-groups.sql
+echo "-- List records with name value" > 16-no_link.sql
+
+# Ajouter les permissions d'exécution
+chmod u+x *.sql
+
+echo "Project structure created! 🎉"
