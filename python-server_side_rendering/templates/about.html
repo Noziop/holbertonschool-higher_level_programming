@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>About - Fassih</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+    <main>
+        <h1>About Me</h1>
+        <section class="about-content">
+            <h2>My story</h2>
+            <p>I am a student @Thonon's Holberton school - 'Thonon les bains' is in Haute-Savoie, France. A very faw step from Geneva, CH.</p>
+            
+            <h2>My Values</h2>
+            <ul>
+                <li>Innovation</li>
+                <li>Quality</li>
+                <li>Integrity</li>
+                <li>Collaboration</li>
+                <li>Passion</li>
+                <li>Fun</li>
+                <li>Excellence</li>
+                <li>Sharing Knowledge</li>
+            </ul>
+        </section>
+    </main>
+    {% include 'footer.html' %}
+</body>
+</html>
